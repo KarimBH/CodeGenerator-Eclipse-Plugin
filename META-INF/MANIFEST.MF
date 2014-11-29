@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.kbh.classesFromXsd.wizards
+Bundle-SymbolicName: com.kbh.classesfromxsd.wizards;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.kbh.classesfromxsd.wizards.Activator
+Bundle-Vendor: Oxia
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
+ JavaSE-1.6,
+ JavaSE-1.8
+Import-Package: org.eclipse.core.boot,
+ org.eclipse.core.resources,
+ org.eclipse.ui.dialogs
+Bundle-ActivationPolicy: lazy

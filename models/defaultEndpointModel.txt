@@ -1,0 +1,31 @@
+package ${packageName};
+
+import org.apache.log4j.NDC;
+import org.springframework.ws.server.endpoint.annotation.Endpoint;
+import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import com.oxia.khas.fwk.transaction.ActiveTransaction;
+import com.oxia.khas.fwk.ws.AbstractServiceEndpoint;
+import ${operationCommandClass};
+import ${operationRequestClass};
+import ${operationResponseClass};
+
+@Endpoint
+public class ${operationName}Endpoint extends AbstractServiceEndpoint {
+
+	@PayloadRoot(localPart = "${operationName}Request", namespace = COMMON_NAMESPACE)
+	@ResponsePayload
+	public ${operationName}Response invokeInternal(@RequestPayload ${operationName}Request request) throws Exception {
+		${operationName}Command command = new ${operationName}Command();
+		ActiveTransaction transaction = new ActiveTransaction(command);
+		NDC.clear();
+		NDC.push(transaction.getId());
+		// TODO complete endpoint class implementation
+		${operationName}Response response = (${operationName}Response)service.execute(transaction);
+		NDC.clear();
+		return response;
+	}
+	
+}

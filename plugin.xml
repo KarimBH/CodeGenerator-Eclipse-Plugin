@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+<extension
+      id="wizard"
+      name="ClassesFromXSD"
+      point="org.eclipse.ui.newWizards">
+   <category 
+         name="Oxia Khas"
+         id="wizard.category1">
+   </category>
+   <wizard
+         name="Classes from XSD"
+         icon="icons/wizard.gif"
+         category="wizard.category1"
+         class="com.kbh.classesfromxsd.wizards.ClassesFromXSDWizard"
+         hasPages="true"
+         id="wizard.wizard1">
+      <description>
+      	Create classes from xsd file.
+      </description>
+   </wizard>
+</extension>
+<extension point="org.eclipse.ui.popupMenus">
+                <objectContribution
+              objectClass="org.eclipse.core.resources.IFolder" 
+                    id="com.kbh.xsdToClassesTool.wizard.popup">
+               <action
+                        label="Generate classes"
+                        icon="icons/action.gif"
+                   class="com.kbh.classesfromxsd.wizards.ClassesFromXSDAction"
+                        id="com.kbh.xsdToClassesTool.wizard.action">
+               </action>
+               </objectContribution>
+                               <objectContribution
+              objectClass="org.eclipse.core.resources.IFile" 	nameFilter="*.xsd"
+                    id="com.kbh.xsdToClassesTool.wizard.popup2">
+               <action
+                        label="Generate classes"
+                        icon="icons/action.gif"
+                   class="com.kbh.classesfromxsd.wizards.ClassesFromXSDAction"
+                        id="com.kbh.xsdToClassesTool.wizard.action">
+               </action>
+               </objectContribution>
+</extension>
+
+<extension point="org.eclipse.ui.preferencePages">
+ <page name="XSD to Classes tool"
+        class="com.kbh.classesfromxsd.preferencePages.GeneralPreferencesPage"
+        id="com.kbh.classesfromxsd.wizards.XsdToclasses.preferences.page"/>
+<page
+         id="com.kbh.classesfromxsd.wizards.XsdToClassesPreferencesPage.superCommandModel"
+         class="com.kbh.classesfromxsd.preferencePages.SCommandModelPreferencePage"
+         name="Super command class model"
+         category="com.kbh.classesfromxsd.wizards.XsdToclasses.preferences.page">
+      </page>   
+  <page
+         id="com.kbh.classesfromxsd.wizards.XsdToClassesPreferencesPage.commandModel"
+         class="com.kbh.classesfromxsd.preferencePages.CommandModelPreferencePage"
+         name="Command class model"
+         category="com.kbh.classesfromxsd.wizards.XsdToclasses.preferences.page">
+      </page> 
+  <page
+         id="com.kbh.classesfromxsd.wizards.XsdToClassesPreferencesPage.endpointModel"
+         class="com.kbh.classesfromxsd.preferencePages.EndpointModelPreferencePage"
+         name="Endpoint class model"
+         category="com.kbh.classesfromxsd.wizards.XsdToclasses.preferences.page">
+      </page>  
+   
+</extension>
+<extension
+         point="org.eclipse.equinox.preferences.preferences">
+         <scope name="PreferencePage" class="com.kbh.classesfromxsd.preferencePages.GeneralPreferencesPage"/>
+      <initializer
+            class="com.kbh.classesfromxsd.preferencePages.PreferenceInitializer">
+      </initializer>
+  </extension>
+</plugin>

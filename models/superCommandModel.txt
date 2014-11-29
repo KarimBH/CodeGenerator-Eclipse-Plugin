@@ -1,0 +1,30 @@
+package ${packageName};
+
+import com.oxia.khas.fwk.model.ExecutionStep;
+import com.oxia.khas.fwk.transaction.Command;
+
+
+public abstract class ${projectName}Command extends Command {
+
+	@Override
+	public Object execute() throws Exception {
+		try{
+			return executeInternal();
+		}catch (${projectName}Exception e) {
+			throw e;
+		}catch (Exception e) {
+			handleException(e);
+		}
+		return null;
+	}
+
+	private void handleException(Exception e) {
+		ExecutionStep actualStep = super.getExecutionStep();
+		if (actualStep != null) {
+			// to do	handling exceptions
+		}	
+	}
+
+	protected abstract Object executeInternal() throws Exception ;
+
+}

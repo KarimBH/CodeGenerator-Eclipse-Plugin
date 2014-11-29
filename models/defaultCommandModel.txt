@@ -1,0 +1,27 @@
+package ${packageName};
+
+import ${operationResponseClass};
+
+public class ${operationName}Command extends ${superCommandClassName}{
+
+    	private static final long serialVersionUID = 1L;
+	@Override
+	public Object executeInternal() throws Exception {
+		
+		if(logger.isDebugEnabled()){
+			logger.debug(" -- execution of ${operationName}" );
+		}
+		 ${operationName}Response response = new  ${operationName}Response();
+		// TODO  setting response attributes 
+
+		return response;
+	}
+	
+	@Override
+   	 public Boolean rollback() {
+		// TODO rollback implementation
+		return false;
+  	  }
+	
+	
+}
